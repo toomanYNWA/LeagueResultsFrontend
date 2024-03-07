@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>League Results</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+
+        }
+        html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        }
+
+        header {
+        background-color: #333;
+        color: #FFEA00;
+        padding: 10px; /* Adjust padding for height */
+        font-size: 24px; /* Adjust font size */
+        text-align: left;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        body {
+          font-family: Arial, sans-serif;
+    background-image: url('https://img.freepik.com/free-vector/soccer-tournament-league-background-with-splatter-effect_1017-50049.jpg?w=996&t=st=1709552372~exp=1709552972~hmac=22447d540c18e82297c5744e121e4c3fccc5d8f033ae5c57a4360ca185a20875'); /* Replace 'your-background-image-url.jpg' with the actual URL or path to your image */
+    background-size: cover; /* Adjust the background size as needed */
+    background-position: center center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+    overflow-x: hidden; /* Hide horizontal overflow to prevent scrollbars */
+
+      }
+
+        .custom-caption {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 30px;
+
+        }
+
+        .entry-button {
+        padding: 15px 30px; /* Adjust padding for height and width */
+        font-size: 20px;    /* Adjust font size */
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        color: #FFEA00;
+        background-color: #0a6acf;
+        border: solid;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        }
+
+        .entry-button:hover {
+            background-color: #641ab8;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        League Results
+    </header>
+
+    <div class="container">
+        <div class="custom-caption"></div>
+
+        <div class="buttons-container">
+            <a href="#" class="entry-button">Guest Entry</a>
+            <a href="admin-login" class="entry-button">Admin Entry</a>
+        </div>
+    </div>
+
+</body>
+</html>

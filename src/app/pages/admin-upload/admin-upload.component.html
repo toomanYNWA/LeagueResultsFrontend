@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Login Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://img.freepik.com/free-vector/soccer-tournament-league-background-with-splatter-effect_1017-50049.jpg?w=996&t=st=1709552372~exp=1709552972~hmac=22447d540c18e82297c5744e121e4c3fccc5d8f033ae5c57a4360ca185a20875'); /* Replace 'your-background-image-url.jpg' with the actual URL or path to your image */
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #fff;
+        }
+        header {
+        background-color: #333;
+        color: #FFEA00;
+        padding: 10px; /* Adjust padding for height */
+        font-size: 24px; /* Adjust font size */
+        text-align: left;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        align-items: center;
+        }
+        .header-icon img {
+            width: 40px; /* Set the width of your icon */
+            height: 40px; /* Set the height of your icon */
+            margin-right: 10px; /* Adjust the margin as needed */
+        }
+
+        .login-form {
+            background-color: rgba(0, 0, 0, 0.453);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 10px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .caption-label {
+            display: block;
+            font-size: large;
+            margin-bottom: 20px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: rgb(84, 67, 242);
+        }
+        .input-field {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #f39898;
+        border-radius: 5px;
+        box-sizing: border-box;
+        transition: background-color 0.3s; /* Add a transition for a smooth effect */
+        }
+        .input-field:hover {
+        background-color: #ead5ec; /* Change the background color on hover */
+        }
+
+        .login-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            color: #FFEA00;
+            background-color: #007bff;
+            border: solid;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .buttons-container {
+            display: flex;
+            gap: 30px;
+
+        }
+
+        .login-button:hover {
+            background-color: #641ab8;
+        }
+        .upload-button {
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #FFEA00;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .upload-button:hover {
+            background-color: #641ab8;
+        }
+
+        .file-container {
+            padding: 20px;
+            text-align: center;
+
+        }
+
+        .flex-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .file-label {
+          font-family: 'Times New Roman', Times, serif;
+            font-size: 30px;
+            margin-bottom: 10px;
+            width: 100%;
+            color: #FFEA00;
+        }
+
+        .file-input {
+          padding: 10px;
+            margin-bottom: 20px;
+            width: calc(100% - 20px); /* Adjust width and padding */
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: background-color 0.3s;
+        }
+    </style>
+</head>
+<body>
+  <header>
+    <div class="header-icon">
+      <img src="assets/soccer-player.png" alt="">
+    </div>
+    League Results
+</header>
+<div class="flex-container">
+  <div class="file-container">
+      <div class="file-label">Table:
+          <input type="file" class="file-input" name="tableFile" accept=".csv, .xlsx" (change)="onTableSelected($event)">
+
+      </div>
+
+      <div class="file-label">Players:
+          <input type="file" class="file-input" name="playersFile" accept=".csv, .xlsx" (change)="onPlayersSelected($event)">
+
+      </div>
+
+      <div class="file-label">Contracts:
+          <input type="file" class="file-input" name="contractsFile" accept=".csv, .xlsx" (change)="onContractsSelected($event)">
+
+      </div>
+
+      <div class="file-label">Fixtures:
+          <input type="file" class="file-input" name="fixturesFile" accept=".csv, .xlsx" (change)="onFixturesSelected($event)">
+
+      </div>
+  </div>
+</div>
+</body>
+</html>
