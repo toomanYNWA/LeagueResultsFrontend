@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your News Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://img.freepik.com/free-vector/gradient-abstract-football-background_52683-66767.jpg?w=1380&t=st=1710159480~exp=1710160080~hmac=7beff62cd0a4c20549f9bc78f9d808fcdbbb2d5a11be38c00b28472102861337');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #fff;
+        }
+
+        header {
+        background-color: #333;
+        color: #FFEA00;
+        padding: 10px; /* Adjust padding for height */
+        font-size: 24px; /* Adjust font size */
+        text-align: left;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        align-items: center;
+        }
+
+        .header-icon img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #FFEA00;
+            margin: 0 15px;
+            font-size: 20px;
+            transition: color 0.3s;
+            padding: 10px;
+        }
+
+        nav a:hover {
+            color: #641ab8;
+        }
+
+        .flex-container {
+            display: flex;
+        }
+
+        .half-page {
+            width: 50%;
+        }
+
+        .form-container,
+        .list-container {
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    font-size: 20px; /* Increase font size */
+    font-weight: bold; /* Add bold font weight */
+}
+
+input,
+textarea {
+    margin-bottom: 16px;
+    padding: 8px;
+    font-size: 16px; /* Adjust font size if needed */
+}
+
+        input[type="file"] {
+            margin-bottom: 16px;
+        }
+
+        button {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #FFEA00;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    max-width: 150px; /* Set the desired maximum width */
+    width: 100%; /* Ensure the button takes full width within the container */
+}
+
+button:hover {
+    background-color: #641ab8;
+}
+
+.news-list {
+    max-height: 400px;
+    max-width: 400px;
+    overflow-y: auto;
+    border: 2px solid #111111; /* Added border */
+    padding: 10px; /* Added padding */
+    background-color: #edf0e1; /* Set a non-transparent background color */
+}
+
+        /* Add this CSS to your existing styles */
+        .news-item {
+    margin-bottom: 16px;
+    padding-bottom: 16px; /* Add padding to space out the items */
+    border-bottom: 3px solid #ddd; /* Add a bottom border between news items */
+}
+
+.headline {
+    color: #FFEA00;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.news-text {
+    font-size: 16px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-icon">
+            <img src="assets/soccer-player.png" alt="">
+        </div>
+        League Results
+        <nav>
+            <a href="admin-upload">UPLOAD DATA</a>
+        </nav>
+    </header>
+    <div class="flex-container">
+        <div class="half-page form-container">
+            <form id="newsForm">
+                <label class="headline" for="headline">Headline:</label>
+                <input type="text" id="headline" name="headline" required [(ngModel)]="headline">
+
+                <label class="headline" for="newsText">News Text:</label>
+                <textarea id="newsText" name="newsText" rows="4" required [(ngModel)]="text"></textarea>
+                <button type="button" (click)="uploadData()">Upload</button>
+            </form>
+        </div>
+        <div class="half-page list-container">
+            <h2 class="headline">Uploaded News</h2>
+            <div class="news-list">
+              <div class="news-item" *ngFor="let newsItem of newsList">
+                <div class="headline">{{ newsItem.headline }}</div>
+                <div class="news-text">{{ newsItem.text }}</div>
+                <!-- You can add more properties as needed -->
+              </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -8,6 +8,9 @@ import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AdminUploadComponent } from './pages/admin-upload/admin-upload.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminNewsComponent } from './pages/admin-news/admin-news.component';
+import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,13 +18,16 @@ import { HttpClientModule } from '@angular/common/http';
     AdminLoginComponent,
     HomePageComponent,
     AdminUploadComponent,
+    AdminNewsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
+
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
