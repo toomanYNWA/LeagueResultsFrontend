@@ -12,6 +12,8 @@ import { AdminNewsComponent } from './pages/admin-news/admin-news.component';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { TablePageComponent } from './pages/table-page/table-page.component';
+import { ResultsPageComponent } from './pages/results-page/results-page.component';
+import { FixturesPageComponent } from './pages/fixtures-page/fixtures-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +23,8 @@ import { TablePageComponent } from './pages/table-page/table-page.component';
     AdminUploadComponent,
     AdminNewsComponent,
     TablePageComponent,
+    ResultsPageComponent,
+    FixturesPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,8 @@ import { AdminUploadComponent } from './pages/admin-upload/admin-upload.componen
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AdminNewsComponent } from './pages/admin-news/admin-news.component';
 import { TablePageComponent } from './pages/table-page/table-page.component';
+import { ResultsPageComponent } from './pages/results-page/results-page.component';
+import { FixturesPageComponent } from './pages/fixtures-page/fixtures-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/admin-login', pathMatch: 'full' },
@@ -14,7 +16,9 @@ const routes: Routes = [
   {path:'admin-upload',component:AdminUploadComponent},
   {path:'home-page',component:HomePageComponent},
   {path:'admin-news',component:AdminNewsComponent},
-  {path:'table-page',component:TablePageComponent}
+  {path:'table-page',component:TablePageComponent},
+  {path:'results-page',component:ResultsPageComponent},
+  {path:'fixtures-page',component:FixturesPageComponent}
 ];
 
 @NgModule({
