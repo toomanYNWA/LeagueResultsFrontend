@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Login Page</title>
     <style>
-        body {
+       body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
@@ -17,6 +18,17 @@
             height: 100vh;
             width: 100vw;
         }
+        html, body {
+    height: 100%;
+}
+
+/* Responsive styles using media queries */
+@media screen and (max-width: 600px) {
+    body {
+        max-width: 100%; /* Adjust the maximum width for smaller screens */
+
+    }
+}
 
         .container {
             display: flex;
@@ -36,6 +48,21 @@
         display: flex;
         align-items: center;
         }
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #FFEA00;
+            margin: 0 15px; /* Adjust spacing between links */
+            font-size: 20px; /* Adjust font size */
+            transition: color 0.3s; /* Add transition for a smooth effect */
+            padding: 10px;
+        }
+        nav a:hover {
+            color: #641ab8; /* Change text color on hover */
+        }
         .header-icon img {
             width: 40px; /* Set the width of your icon */
             height: 40px; /* Set the height of your icon */
@@ -44,10 +71,9 @@
 
         .login-form {
             background-color: rgba(0, 0, 0, 0.453);
-            padding: 50px;
+            padding: 30px;
             border-radius: 10px;
             text-align: center;
-            height: 300px;
         }
 
         .input-label {
@@ -97,27 +123,65 @@
         .login-button:hover {
             background-color: #641ab8;
         }
-        nav {
+        .upload-button {
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #FFEA00;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .upload-button:hover {
+            background-color: #641ab8;
+        }
+
+        .file-container {
+            padding: 20px;
+            text-align: center;
+
+        }
+
+        .flex-container {
             display: flex;
             align-items: center;
+            justify-content: center;
+            height: 30%;
         }
-        nav a {
-            text-decoration: none;
-            color: #FFEA00;
-            margin: 0 15px; /* Adjust spacing between links */
-            font-size: 20px; /* Adjust font size */
-            transition: color 0.3s; /* Add transition for a smooth effect */
-            padding: 10px;
-        }
-        nav a:hover {
-            color: #641ab8; /* Change text color on hover */
-        }
+        table {
+    width: 80%; /* Set the width of the table to 80% of the page */
+    margin: auto ; /* Center the table horizontally and lower it by adding margin */
+    background-color: #fff; /* Set the background color of the table to white */
+    border-collapse: collapse; /* Collapse table borders */
+    border: solid;
+}
+
+/* Optionally, you can style the table header and table data cells */
+th, td {
+    padding: 10px; /* Add padding to header and data cells */
+    text-align: center; /* Center-align the content */
+    border: 1px solid #ccc; /* Add border to cells for better visibility */
+}
+
+/* Add a little extra styling for the table header */
+th {
+    background-color: #333; /* Dark background color */
+    color: #fff; /* White text color */
+}
+.sortable-header:hover {
+  background-color: lightgray; /* Change to your desired hover color */
+  cursor: pointer; /* Change cursor to pointer to indicate interactivity */
+}
     </style>
 </head>
 <body>
   <header>
     <div class="header-icon">
       <img src="assets/soccer-player.png" alt="">
+
     </div>
     League Results
     <nav>
@@ -127,24 +191,31 @@
       <a href="table-page">TABLE</a>
   </nav>
 </header>
-
-    <div class="container">
-        <div class="login-form">
-            <div class="caption-label">Admin Login</div>
-            <div class="input-label">Username</div>
-            <input type="text" class="input-field" placeholder="Enter your username">
-
-            <div class="input-label">Password</div>
-            <input type="password" class="input-field" placeholder="Enter your password">
-
-            <div class="buttons-container">
-              <a href="admin-upload" class="login-button">Login</a>
-              <a href="home-page" class="login-button">Guest</a>
-          </div>
-
-        </div>
-
-    </div>
-
+<div class="flex-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Team</th>
+        <th (click)="sortBy('matchesPlayed')" class="sortable-header">MP</th>
+        <th (click)="sortBy('won')" class="sortable-header">W</th>
+        <th (click)="sortBy('drawn')" class="sortable-header">D</th>
+        <th (click)="sortBy('lost')" class="sortable-header">L</th>
+        <th (click)="sortBy('goalDifference')" class="sortable-header">GD</th>
+        <th (click)="sortBy('points')" class="sortable-header">Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let clubRank of clubRankList">
+        <td>{{ clubRank.clubName }}</td>
+        <td>{{ clubRank.matchesPlayed }}</td>
+        <td>{{ clubRank.won }}</td>
+        <td>{{ clubRank.drawn }}</td>
+        <td>{{ clubRank.lost }}</td>
+        <td>{{ clubRank.goalDifference }}</td>
+        <td>{{ clubRank.points }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 </body>
 </html>

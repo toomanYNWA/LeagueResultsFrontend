@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminNewsComponent } from './pages/admin-news/admin-news.component';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { TablePageComponent } from './pages/table-page/table-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +20,7 @@ import { DatePipe } from '@angular/common';
     HomePageComponent,
     AdminUploadComponent,
     AdminNewsComponent,
+    TablePageComponent,
   ],
   imports: [
     BrowserModule,

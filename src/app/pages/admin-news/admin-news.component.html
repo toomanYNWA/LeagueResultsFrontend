@@ -31,7 +31,7 @@
         background-color: #333;
         color: #FFEA00;
         padding: 10px; /* Adjust padding for height */
-        font-size: 24px; /* Adjust font size */
+        font-size: 35px; /* Adjust font size */
         text-align: left;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         display: flex;
@@ -140,6 +140,9 @@ button:hover {
 .news-text {
     font-size: 16px;
 }
+.date {
+          font-style: italic; /* Style the date */
+        }
     </style>
 </head>
 <body>
@@ -169,6 +172,7 @@ button:hover {
               <div class="news-item" *ngFor="let newsItem of newsList">
                 <div class="headline">{{ newsItem.headline }}</div>
                 <div class="news-text">{{ newsItem.text }}</div>
+                <p class="date">Published on: {{ newsItem.date }}</p>
                 <!-- You can add more properties as needed -->
               </div>
             </div>
