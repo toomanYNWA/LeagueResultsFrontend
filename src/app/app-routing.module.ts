@@ -8,6 +8,7 @@ import { AdminNewsComponent } from './pages/admin-news/admin-news.component';
 import { TablePageComponent } from './pages/table-page/table-page.component';
 import { ResultsPageComponent } from './pages/results-page/results-page.component';
 import { FixturesPageComponent } from './pages/fixtures-page/fixtures-page.component';
+import { ClubsPageComponent } from './pages/clubs-page/clubs-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/admin-login', pathMatch: 'full' },
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path:'admin-news',component:AdminNewsComponent},
   {path:'table-page',component:TablePageComponent},
   {path:'results-page',component:ResultsPageComponent},
-  {path:'fixtures-page',component:FixturesPageComponent}
+  {path:'fixtures-page',component:FixturesPageComponent},
+  {path:'clubs-page',component:ClubsPageComponent}
 ];
 
 @NgModule({

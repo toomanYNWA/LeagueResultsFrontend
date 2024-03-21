@@ -14,6 +14,7 @@ import { DatePipe } from '@angular/common';
 import { TablePageComponent } from './pages/table-page/table-page.component';
 import { ResultsPageComponent } from './pages/results-page/results-page.component';
 import { FixturesPageComponent } from './pages/fixtures-page/fixtures-page.component';
+import { ClubsPageComponent } from './pages/clubs-page/clubs-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { FixturesPageComponent } from './pages/fixtures-page/fixtures-page.compo
     TablePageComponent,
     ResultsPageComponent,
     FixturesPageComponent,
+    ClubsPageComponent,
   ],
   imports: [
     BrowserModule,
