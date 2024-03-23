@@ -10,6 +10,7 @@ import { ResultsPageComponent } from './pages/results-page/results-page.componen
 import { FixturesPageComponent } from './pages/fixtures-page/fixtures-page.component';
 import { ClubsPageComponent } from './pages/clubs-page/clubs-page.component';
 import { PlayerStatsComponent } from './pages/player-stats/player-stats.component';
+import { PlayersComponent } from './pages/players/players.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/admin-login', pathMatch: 'full' },
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path:'results-page',component:ResultsPageComponent},
   {path:'fixtures-page',component:FixturesPageComponent},
   {path:'clubs-page',component:ClubsPageComponent},
-  {path:'player-stats', component:PlayerStatsComponent}
+  {path:'player-stats', component:PlayerStatsComponent},
+  {path:'players-page',component:PlayersComponent}
 ];
 
 @NgModule({

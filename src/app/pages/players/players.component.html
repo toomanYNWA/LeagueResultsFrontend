@@ -64,39 +64,46 @@
             height: 40px; /* Set the height of your icon */
             margin-right: 10px; /* Adjust the margin as needed */
         }
-
-        .login-form {
-            background-color: rgba(0, 0, 0, 0.453);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
+        .pagination-container {
+          overflow-x: auto; /* Enable horizontal scrolling */
+          white-space: nowrap; /* Prevent line breaks */
+          width: 50%; /* Adjust the width as needed */
+          margin: 0 auto;
         }
 
-        .input-label {
-            display: block;
-            margin-bottom: 10px;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        }
-        .caption-label {
-            display: block;
-            font-size: large;
-            margin-bottom: 20px;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            color: rgb(84, 67, 242);
-        }
-        .input-field {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 20px;
-        border: 1px solid #f39898;
-        border-radius: 5px;
-        box-sizing: border-box;
-        transition: background-color 0.3s; /* Add a transition for a smooth effect */
-        }
-        .input-field:hover {
-        background-color: #ead5ec; /* Change the background color on hover */
+        .pagination {
+          display: inline-block; /* Ensure buttons stay in one line */
         }
 
+        .pagination-button {
+  margin-right: 5px; /* Adjust spacing between buttons */
+  padding: 10px 15px; /* Adjust padding */
+  font-size: 16px; /* Adjust font size */
+  background-color: #007bff; /* Set background color */
+  color: #FFEA00; /* Set text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Add border radius */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination-button.active {
+  background-color: #641ab8; /* Change color for active button */
+}
+
+        .pagination button:hover {
+            background-color: #0056b3; /* Change background color on hover */
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 30px;
+
+        }
+
+        .login-button:hover {
+            background-color: #641ab8;
+        }
         .login-button {
             padding: 10px 20px;
             font-size: 18px;
@@ -109,67 +116,26 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            margin: auto;
         }
-        .buttons-container {
-            display: flex;
-            gap: 30px;
+        table {
+    border-collapse: collapse;
+    width: 70%;
+    background-color: white;
+    border: 2px solid black; /* Solid border */
+    margin: auto;
+    margin-top: 20px;
+  }
 
-        }
+  th, td {
+    border: 1px solid black; /* Solid border for table cells */
+    padding: 8px;
+    text-align: left;
+  }
 
-        .login-button:hover {
-            background-color: #641ab8;
-        }
-        .upload-button {
-            padding: 8px 16px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: #FFEA00;
-            border: none;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-            width: 100%;
-        }
-
-        .upload-button:hover {
-            background-color: #641ab8;
-        }
-
-        .file-container {
-            padding: 20px;
-            text-align: center;
-
-        }
-
-        .flex-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 30%;
-        }
-
-        .news-container {
-          border: 2px solid #ccc;
-          padding: 20px; /* Increase padding to add more space around news items */
-          height: 400px; /* Set a fixed height for the container */
-          overflow-y: auto; /* Enable vertical scrolling */
-        }
-
-        .news-item {
-          margin-bottom: 20px;
-          padding: 10px;
-          background-color: #fff; /* Set background color to white */
-          border: 1px solid #ccc; /* Add border to each news item */
-          border-radius: 5px; /* Rounded corners */
-        }
-
-        .news-content {
-         color: #333; /* Change text color */
-        }
-
-        .date {
-          font-style: italic; /* Style the date */
-        }
+  th {
+    background-color: #4e4d4d; /* Light gray background for table headers */
+  }
     </style>
 </head>
 <body>
@@ -189,14 +155,42 @@
       <a href="players-page">PLAYERS</a>
   </nav>
 </header>
-<div class="news-container">
-  <div *ngFor="let newsItem of newsList" class="news-item">
-    <div class="news-content">
-      <h2>{{ newsItem.headline }}</h2>
-      <p>{{ newsItem.text }}</p>
-      <p class="date">Published on: {{ newsItem.date }}</p>
-    </div>
+
+<table >
+  <thead>
+    <tr>
+      <th>Player Name</th>
+      <th>Club</th>
+      <th>Contract</th>
+      <th>Expires</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let player of players">
+      <td>{{ player.playerName }}</td>
+      <td>{{ player.clubName }}</td>
+      <td>{{ player.contractType }}</td>
+      <td>{{ player.ending }}</td>
+
+    </tr>
+  </tbody>
+</table>
+<div class="pagination-container">
+  <div class="pagination">
+    <button *ngFor="let num of pageNumbers"
+            class="pagination-button"
+            [class.active]="pageNumber === num"
+            (click)="onPageChange(num)">
+      {{ num+1 }}
+    </button>
   </div>
 </div>
+<div class="buttons-container">
+  <button class="login-button" (click)="onPageChange(pageNumber - 1)" [disabled]="pageNumber === 0">Previous</button>
+  <button class="login-button" (click)="onPageChange(pageNumber + 1)" [disabled]="pageNumber === 35">Next</button>
+</div>
+
+
+
 </body>
 </html>

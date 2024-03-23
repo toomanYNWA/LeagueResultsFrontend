@@ -16,6 +16,7 @@ import { ResultsPageComponent } from './pages/results-page/results-page.componen
 import { FixturesPageComponent } from './pages/fixtures-page/fixtures-page.component';
 import { ClubsPageComponent } from './pages/clubs-page/clubs-page.component';
 import { PlayerStatsComponent } from './pages/player-stats/player-stats.component';
+import { PlayersComponent } from './pages/players/players.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { PlayerStatsComponent } from './pages/player-stats/player-stats.componen
     FixturesPageComponent,
     ClubsPageComponent,
     PlayerStatsComponent,
+    PlayersComponent,
   ],
   imports: [
     BrowserModule,
