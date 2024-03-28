@@ -15,7 +15,7 @@
             background-position: center center;
             background-repeat: no-repeat;
             overflow: hidden;
-            height: 100vh;
+            height: 97vh;
             width: 100vw;
         }
 
@@ -147,21 +147,23 @@
             justify-content: center;
             height: 30%;
         }
-
         .news-container {
-          border: 2px solid #ccc;
+          border: 2px solid #094974;
           padding: 20px; /* Increase padding to add more space around news items */
-          height: 400px; /* Set a fixed height for the container */
+          height: 750px; /* Set a fixed height for the container */
           overflow-y: auto; /* Enable vertical scrolling */
-        }
+          width: 60%;
+          margin: 0 auto; /* Center the container horizontally */
+      }
 
-        .news-item {
-          margin-bottom: 20px;
-          padding: 10px;
-          background-color: #fff; /* Set background color to white */
-          border: 1px solid #ccc; /* Add border to each news item */
-          border-radius: 5px; /* Rounded corners */
-        }
+      .news-item {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f8dfdf; /* Set background color to white */
+  border: 1px solid #b61616; /* Add border to each news item */
+  border-radius: 5px; /* Rounded corners */
+  overflow-wrap: break-word; /* Break long words and wrap onto the next line */
+}
 
         .news-content {
          color: #333; /* Change text color */
@@ -170,6 +172,7 @@
         .date {
           font-style: italic; /* Style the date */
         }
+
     </style>
 </head>
 <body>
@@ -190,6 +193,7 @@
   </nav>
 </header>
 <div class="news-container">
+  <h2 style="font-size: 28px; color: #ddba59; background-color: rgba(0, 0, 0, 0.8); padding: 10px 20px; border-radius: 5px; margin-bottom: 10px; text-align: center;">NEWS</h2>
   <div *ngFor="let newsItem of newsList" class="news-item">
     <div class="news-content">
       <h2>{{ newsItem.headline }}</h2>

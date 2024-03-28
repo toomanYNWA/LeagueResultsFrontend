@@ -14,7 +14,7 @@
             background-position: center center;
             background-repeat: no-repeat;
             overflow: hidden;
-            height: 100vh;
+            height: 97vh;
             width: 100vw;
         }
 
@@ -131,12 +131,30 @@ button:hover {
 }
 
 .headline {
+  background-color: rgba(0, 0, 0, 0.453);
     color: #FFEA00;
     font-size: 25px;
     font-weight: bold;
     margin-bottom: 8px;
+    width: 21%;
+}
+.headline-text {
+  background-color: rgba(0, 0, 0, 0.453);
+    color: #FFEA00;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    width: 15%;
 }
 
+.headline-news {
+
+    color: #322136;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    width: auto;
+}
 .news-text {
     font-size: 16px;
 }
@@ -152,30 +170,33 @@ button:hover {
         </div>
         League Results
         <nav>
+            <a href="home-page">HOME</a>
             <a href="admin-upload">UPLOAD DATA</a>
         </nav>
     </header>
     <div class="flex-container">
         <div class="half-page form-container">
             <form id="newsForm">
-                <label class="headline" for="headline">Headline:</label>
+                <label class="headline-text" for="headline">Headline:</label>
                 <input type="text" id="headline" name="headline" required [(ngModel)]="headline">
 
-                <label class="headline" for="newsText">News Text:</label>
+                <label class="headline-text" for="newsText">News Text:</label>
                 <textarea id="newsText" name="newsText" rows="4" required [(ngModel)]="text"></textarea>
                 <button type="button" (click)="uploadData()">Upload</button>
             </form>
         </div>
         <div class="half-page list-container">
             <h2 class="headline">Uploaded News</h2>
+
             <div class="news-list">
               <div class="news-item" *ngFor="let newsItem of newsList">
-                <div class="headline">{{ newsItem.headline }}</div>
+                <div class="headline-news">{{ newsItem.headline }}</div>
                 <div class="news-text">{{ newsItem.text }}</div>
                 <p class="date">Published on: {{ newsItem.date }}</p>
                 <!-- You can add more properties as needed -->
               </div>
             </div>
+            <button (click)="refreshPage()">Refresh</button>
         </div>
     </div>
 </body>

@@ -15,7 +15,7 @@
             background-position: center center;
             background-repeat: no-repeat;
             overflow: hidden;
-            height: 100vh;
+            height: 97vh;
             width: 100vw;
         }
 
@@ -110,7 +110,7 @@
             font-weight: bold;
             text-align: center;
             text-decoration: none;
-            color: #FFEA00;
+            color: #e5f052;
             background-color: #007bff;
             border: solid;
             border-radius: 5px;
@@ -135,6 +135,12 @@
 
   th {
     background-color: #4e4d4d; /* Light gray background for table headers */
+  }
+  tr:nth-child(even) {
+    background-color: #f0a646;
+  }
+  tr:nth-child(odd) {
+    background-color: #eedbc3;
   }
     </style>
 </head>
@@ -170,7 +176,7 @@
       <td>{{ player.playerName }}</td>
       <td>{{ player.clubName }}</td>
       <td>{{ player.contractType }}</td>
-      <td>{{ player.ending }}</td>
+      <td>{{ player.ending | date:'dd-MM-yyyy'}}</td>
 
     </tr>
   </tbody>

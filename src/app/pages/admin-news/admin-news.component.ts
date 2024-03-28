@@ -47,11 +47,20 @@ export class AdminNewsComponent implements OnInit {
       response => {
         // Handle successful response
         console.log('Upload successful:', response);
+
       },
       error => {
         // Handle error
         console.error('Error uploading data:', error);
+        setTimeout(() => {
+          this.headline = '';
+          this.text = '';
+        }, 0);
       }
+
     );
   }
+  refreshPage() {
+    window.location.reload();
+}
 }
