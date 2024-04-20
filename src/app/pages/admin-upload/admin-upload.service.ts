@@ -45,4 +45,13 @@ export class AdminUploadService {
 
     return this.http.post('http://localhost:8080/api/match/upload-data', formData, { headers });
   }
+  uploadFileStats(file: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+
+    const headers = new HttpHeaders();
+    // Set any additional headers if needed
+
+    return this.http.post('http://localhost:8080/api/stats/upload-data', formData, { headers });
+  }
 }

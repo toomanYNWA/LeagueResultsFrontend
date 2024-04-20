@@ -19,16 +19,15 @@
             width: 100vw;
         }
         html, body {
-    height: 100%;
-}
+            height: 100%;
+        }
 
-/* Responsive styles using media queries */
-@media screen and (max-width: 600px) {
-    body {
-        max-width: 100%; /* Adjust the maximum width for smaller screens */
-
-    }
-}
+        /* Responsive styles using media queries */
+        @media screen and (max-width: 600px) {
+            body {
+                max-width: 100%; /* Adjust the maximum width for smaller screens */
+            }
+        }
 
         .container {
             display: flex;
@@ -39,14 +38,14 @@
             color: #fff;
         }
         header {
-        background-color: #333;
-        color: #FFEA00;
-        padding: 10px; /* Adjust padding for height */
-        font-size: 35px; /* Adjust font size */
-        text-align: left;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        display: flex;
-        align-items: center;
+            background-color: #333;
+            color: #FFEA00;
+            padding: 10px; /* Adjust padding for height */
+            font-size: 35px; /* Adjust font size */
+            text-align: left;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            align-items: center;
         }
         nav {
             display: flex;
@@ -80,69 +79,106 @@
             overflow-y: auto; /* Enable vertical scrollbar if needed */
         }
         table {
-          width: 80%; /* Set the width of the table to 80% of the page */
-          margin: auto ; /* Center the table horizontally and lower it by adding margin */
-          background-color: #fff; /* Set the background color of the table to white */
-          border-collapse: collapse; /* Collapse table borders */
-          border: solid;
+            width: 80%; /* Set the width of the table to 80% of the page */
+            margin: auto; /* Center the table horizontally and lower it by adding margin */
+            background-color: #fff; /* Set the background color of the table to white */
+            border-collapse: collapse; /* Collapse table borders */
+            border: solid;
         }
 
-/* Optionally, you can style the table header and table data cells */
-th, td {
-    padding: 10px; /* Add padding to header and data cells */
-    text-align: center; /* Center-align the content */
-    border: 1px solid #ccc; /* Add border to cells for better visibility */
-}
+        /* Optionally, you can style the table header and table data cells */
+        th, td {
+            padding: 10px; /* Add padding to header and data cells */
+            text-align: center; /* Center-align the content */
+            border: 1px solid #ccc; /* Add border to cells for better visibility */
+        }
 
-/* Add a little extra styling for the table header */
-th {
-    background-color: #333; /* Dark background color */
-    color: #fff; /* White text color */
+        /* Add a little extra styling for the table header */
+        th {
+            background-color: #333; /* Dark background color */
+            color: #fff; /* White text color */
+        }
+        .highlighted-row {
+          background-color: #fcb5b5; /* Set the background color for the highlighted row */
+        }
+        .stat-popup {
+  position: absolute;
+  top: 40%; /* Center vertically */
+  left: 10px; /* Adjust as needed */
+  transform: translateY(-50%); /* Center vertically */
+  background-color: rgba(226, 135, 135, 0.9);
+  border: 2px solid #0f0f0f;
+  padding: 20px;
+  z-index: 1000; /* Ensure the tooltip/popover is above other elements */
+}#teamSelect {
+  width: 200px; /* Set the width of the select element */
+  height: 40px; /* Set the height of the select element */
 }
-
     </style>
 </head>
 <body>
-  <header>
+<header>
     <div class="header-icon">
-      <img src="assets/soccer-player.png" alt="">
-
+        <img src="assets/soccer-player.png" alt="">
     </div>
     League Results
     <nav>
-      <a href="home-page">HOME</a>
-      <a href="results-page">RESULTS</a>
-      <a href="fixtures-page">FIXTURES</a>
-      <a href="clubs-page">CLUBS</a>
-      <a href="table-page">TABLE</a>
-      <a href="player-stats">PLAYER STATS</a>
-      <a href="players-page">PLAYERS</a>
-  </nav>
+        <a href="home-page">HOME</a>
+        <a href="results-page">RESULTS</a>
+        <a href="fixtures-page">FIXTURES</a>
+        <a href="clubs-page">CLUBS</a>
+        <a href="table-page">TABLE</a>
+        <a href="player-stats">PLAYER STATS</a>
+        <a href="players-page">PLAYERS</a>
+    </nav>
 </header>
 <div class="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th >ROUND</th>
-        <th>HOST</th>
-        <th >GUEST</th>
 
-        <th >REF</th>
-        <th >KICKOFF</th>
-        <th >RESULT</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let match of matchList">
-        <td>{{ match.roundNumber }}</td>
-        <td>{{ match.hostName }}</td>
-        <td>{{ match.guestName }}</td>
-        <td>{{ match.refereeName }} {{match.refereeSurname}}</td>
-        <td>{{ match.kickoff }}</td>
-        <td>{{ match.result }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <select id="teamSelect" [(ngModel)]="selectedTeam" (change)="filterMatches()">
+    <option value="all">All Teams</option>
+    <option *ngFor="let team of teamList" [value]="team.name">{{ team.name }}</option>
+  </select>
+    <table id="matchesTable">
+        <thead>
+        <tr>
+            <th>ROUND</th>
+            <th>HOST</th>
+            <th>GUEST</th>
+            <th>REF</th>
+            <th>KICKOFF</th>
+            <th>RESULT</th>
+        </tr>
+        <div *ngIf="showStatPopup" class="stat-popup">
+          <h2>Match Stats</h2>
+          <h3>Host Stats</h3>
+          <p>Possesion: {{ stat.possessionHost }}%</p>
+          <p>Shots: {{ stat.shotsHost }}</p>
+          <p>On Target: {{ stat.onTargetHost }}</p>
+          <p>Minutes scored: {{ stat.hostMinutes }}</p>
+          <h3>Guest Stats</h3>
+          <p>Possesion: {{ stat.possessionGuest }}%</p>
+          <p>Shots: {{ stat.shotsGuest }}</p>
+          <p>On Target: {{ stat.onTargetGuest }}</p>
+          <p>Minutes scoared: {{ stat.guestMinutes }}</p>
+          <!-- Add more stat properties as needed -->
+      </div>
+        </thead>
+        <tbody>
+        <tr *ngFor="let match of matchList"
+        (mouseover)="showPopup(match.id)"
+        (mouseout)="hidePopup()"
+        [ngClass]="{'highlighted-row': isRowHighlighted}"
+        >
+            <td>{{ match.roundNumber }}</td>
+            <td>{{ match.hostName }}</td>
+            <td>{{ match.guestName }}</td>
+            <td>{{ match.refereeName }} {{match.refereeSurname}}</td>
+            <td>{{ match.kickoff }}</td>
+            <td>{{ match.result }}</td>
+        </tr>
+        </tbody>
+    </table>
 </div>
+
 </body>
 </html>

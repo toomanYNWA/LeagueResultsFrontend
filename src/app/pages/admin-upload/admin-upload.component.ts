@@ -7,7 +7,7 @@ import { AdminUploadService } from './admin-upload.service';
   styleUrls: ['./admin-upload.component.css']
 })
 export class AdminUploadComponent implements OnInit {
-
+  message: string="";
   constructor(private adminUploadService :AdminUploadService) { }
 
   ngOnInit(): void {
@@ -21,10 +21,11 @@ export class AdminUploadComponent implements OnInit {
         .subscribe(
           response => {
             console.log('File uploaded successfully:', response);
-            // Handle the response from the backend
+            alert("Table uploaded successfully!");
           },
           error => {
             console.error('Error uploading file:', error);
+
             // Handle the error
           }
         );
@@ -38,6 +39,7 @@ export class AdminUploadComponent implements OnInit {
         .subscribe(
           response => {
             console.log('File uploaded successfully:', response);
+            alert("Players uploaded successfully!");
             // Handle the response from the backend
           },
           error => {
@@ -55,6 +57,7 @@ export class AdminUploadComponent implements OnInit {
         .subscribe(
           response => {
             console.log('File uploaded successfully:', response);
+            alert("Contracts uploaded successfully!");
             // Handle the response from the backend
           },
           error => {
@@ -72,6 +75,25 @@ export class AdminUploadComponent implements OnInit {
         .subscribe(
           response => {
             console.log('File uploaded successfully:', response);
+            alert("Fixtures uploaded successfully!");
+            // Handle the response from the backend
+          },
+          error => {
+            console.error('Error uploading file:', error);
+            // Handle the error
+          }
+        );
+    }
+  }
+  onStatsSelected(event:any){
+    const file: File = event.target.files[0];
+
+    if (file) {
+      this.adminUploadService.uploadFileStats(file)
+        .subscribe(
+          response => {
+            console.log('File uploaded successfully:', response);
+            alert("Stats uploaded successfully!");
             // Handle the response from the backend
           },
           error => {
