@@ -18,4 +18,7 @@ export class ClubsPageService {
   getPlayersByClubId(clubId: number): Observable<PlayerDTO[]> {
     return this.http.get<PlayerDTO[]>(`http://localhost:8080/api/player/get-player-by-club/${clubId}`)
   }
+  generatePDF(clubId:number){
+    return this.http.get(`http://localhost:8080/api/stats/period-goals-by-club-id/${clubId}`)
+  }
 }

@@ -62,4 +62,11 @@ export class ClubsPageComponent implements OnInit {
         return 'default-icon.png'; // Default icon if club ID doesn't match
     }
   }
+  generatePDF(clubId:number):void{
+    this.clubService.generatePDF(clubId).subscribe(
+      response=>{
+        alert("PDF generated!")
+      }
+    );
+  }
 }
