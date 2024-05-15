@@ -108,16 +108,17 @@ thead {
     top: 0;
     z-index: 1; /* Ensure the header is above other elements */
 }
-        .stat-popup {
+.stat-popup {
   position: absolute;
-  top: 40%; /* Center vertically */
-  left: 10px; /* Adjust as needed */
+  top: calc(50% + 250px);
+  left: -200px;
   transform: translateY(-50%); /* Center vertically */
   background-color: rgba(226, 135, 135, 0.9);
   border: 2px solid #0f0f0f;
   padding: 20px;
   z-index: 1000; /* Ensure the tooltip/popover is above other elements */
-}#teamSelect {
+}
+#teamSelect {
   width: 200px; /* Set the width of the select element */
   height: 40px; /* Set the height of the select element */
 }
@@ -180,8 +181,8 @@ thead {
             <td>{{ match.hostName }}</td>
             <td>{{ match.guestName }}</td>
             <td>{{ match.refereeName }} {{match.refereeSurname}}</td>
-            <td>{{ match.kickoff }}</td>
             <td>{{ match.kickoff | date: 'dd.MM.yyyy. HH:mm' }}</td>
+            <td>{{ match.result }}</td>
         </tr>
         </tbody>
     </table>

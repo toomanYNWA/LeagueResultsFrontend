@@ -149,7 +149,7 @@
               <th>Player</th>
               <th>Goals</th>
           </tr>
-          <tr *ngFor="let player of goalsList; let i=index" [ngClass]="{'even-row': i % 2 === 1}">
+          <tr *ngFor="let player of goalsList.slice(0,10); let i=index" [ngClass]="{'even-row': i % 2 === 1}">
             <td>{{ i + 1 }}</td>
             <td>{{ player.fullName }}</td>
             <td>{{ player.goals }}</td>
@@ -165,7 +165,7 @@
               <th>Player</th>
               <th>Assists</th>
           </tr>
-          <tr *ngFor="let player of assistsList; let i=index" [ngClass]="{'even-row': i % 2 === 1}">
+          <tr *ngFor="let player of assistsList.slice(0,10); let i=index" [ngClass]="{'even-row': i % 2 === 1}">
             <td>{{ i + 1 }}</td>
             <td>{{ player.fullName }}</td>
             <td>{{ player.assists }}</td>

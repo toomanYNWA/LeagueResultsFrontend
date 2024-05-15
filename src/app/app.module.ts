@@ -17,6 +17,9 @@ import { FixturesPageComponent } from './pages/fixtures-page/fixtures-page.compo
 import { ClubsPageComponent } from './pages/clubs-page/clubs-page.component';
 import { PlayerStatsComponent } from './pages/player-stats/player-stats.component';
 import { PlayersComponent } from './pages/players/players.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,12 +34,17 @@ import { PlayersComponent } from './pages/players/players.component';
     ClubsPageComponent,
     PlayerStatsComponent,
     PlayersComponent,
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+
 
   ],
   providers: [DatePipe],

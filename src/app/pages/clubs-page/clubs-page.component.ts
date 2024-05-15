@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClubsPageService } from './clubs-page.service';
 import { ClubDTO } from './club-dto.model';
 import { PlayerDTO } from './player-dto.component';
+import {ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-clubs-page',
@@ -13,7 +14,7 @@ export class ClubsPageComponent implements OnInit {
   selectedClub: ClubDTO | null = null;
   showPlayerTable: boolean = false;
   playersList: PlayerDTO [] = [];
-  constructor(private clubService: ClubsPageService) { }
+  constructor(private clubService: ClubsPageService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.clubService.getAllClubsInLeague().subscribe(
@@ -65,7 +66,7 @@ export class ClubsPageComponent implements OnInit {
   generatePDF(clubId:number):void{
     this.clubService.generatePDF(clubId).subscribe(
       response=>{
-        alert("PDF generated!")
+        this.toastr.success("","PDF generated successfully!")
       }
     );
   }

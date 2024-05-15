@@ -5,4 +5,6 @@ export interface ClubDTO{
   stadiumName: string;
   ownerName: string;
   icon: string;
+  stadiumCap: number;
+  cityName:string;
 }

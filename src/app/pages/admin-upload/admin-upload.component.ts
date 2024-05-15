@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminUploadService } from './admin-upload.service';
+import {ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-upload',
@@ -8,7 +9,7 @@ import { AdminUploadService } from './admin-upload.service';
 })
 export class AdminUploadComponent implements OnInit {
   message: string="";
-  constructor(private adminUploadService :AdminUploadService) { }
+  constructor(private adminUploadService :AdminUploadService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -21,11 +22,11 @@ export class AdminUploadComponent implements OnInit {
         .subscribe(
           response => {
             console.log('File uploaded successfully:', response);
-            alert("Table uploaded successfully!");
+            this.toastr.success("", "Table uploaded successfully!");
           },
           error => {
             console.error('Error uploading file:', error);
-
+            this.toastr.error("","Uploading failed!");
             // Handle the error
           }
         );
@@ -39,12 +40,12 @@ export class AdminUploadComponent implements OnInit {
         .subscribe(
           response => {
             console.log('File uploaded successfully:', response);
-            alert("Players uploaded successfully!");
+            this.toastr.success("", "Players uploaded successfully!");
             // Handle the response from the backend
           },
           error => {
             console.error('Error uploading file:', error);
-            // Handle the error
+            this.toastr.error("","Uploading failed!");
           }
         );
     }
@@ -57,12 +58,12 @@ export class AdminUploadComponent implements OnInit {
         .subscribe(
           response => {
             console.log('File uploaded successfully:', response);
-            alert("Contracts uploaded successfully!");
+            this.toastr.success("", "Contracts uploaded successfully!");
             // Handle the response from the backend
           },
           error => {
             console.error('Error uploading file:', error);
-            // Handle the error
+            this.toastr.error("","Uploading failed!");
           }
         );
     }
@@ -75,12 +76,12 @@ export class AdminUploadComponent implements OnInit {
         .subscribe(
           response => {
             console.log('File uploaded successfully:', response);
-            alert("Fixtures uploaded successfully!");
+            this.toastr.success("","Fixtures uploaded successfully!");
             // Handle the response from the backend
           },
           error => {
             console.error('Error uploading file:', error);
-            // Handle the error
+            this.toastr.error("","Uploading failed!");
           }
         );
     }
@@ -93,14 +94,15 @@ export class AdminUploadComponent implements OnInit {
         .subscribe(
           response => {
             console.log('File uploaded successfully:', response);
-            alert("Stats uploaded successfully!");
+            this.toastr.success("","Stats uploaded successfully!");
             // Handle the response from the backend
           },
           error => {
             console.error('Error uploading file:', error);
-            // Handle the error
+            this.toastr.error("","Uploading failed!");
           }
         );
     }
   }
+
 }

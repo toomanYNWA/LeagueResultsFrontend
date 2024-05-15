@@ -200,10 +200,11 @@
 <div class="file-container">
   <form id="club-data-form" *ngIf="selectedClub">
     <img src="{{ selectedClub.icon }}" >
-    <label>Name: {{ selectedClub.name }}</label><br>
+    <label>{{ selectedClub.name }}</label><br>
     <label>Year of Establishment: {{ selectedClub.yearOfEstablishment }}</label><br>
     <label>Owner: {{ selectedClub.ownerName }}</label><br>
-    <label>Stadium Name: {{ selectedClub.stadiumName }}</label>
+    <label>Stadium Name(Capacity): {{ selectedClub.stadiumName }}({{selectedClub.stadiumCap}})</label><br>
+    <label>City: {{ selectedClub.cityName }}</label>
     <button class="hoverable-button" (click)="generatePDF(selectedClub.id)">Stats PDF</button>
     <button class="hoverable-button" (click)="showPlayers(selectedClub.id)">Show Players</button>
   </form>

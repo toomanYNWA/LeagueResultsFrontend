@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdminNewsService } from './admin-news.service';
 import { DatePipe } from '@angular/common';
 import { NewsDTO } from './news-dto.model';
+import {ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-news',
@@ -13,7 +14,7 @@ export class AdminNewsComponent implements OnInit {
   text: string = '';
   currentDate: string;
   newsList: NewsDTO[] = [];
-  constructor(private adminNewsService: AdminNewsService, private datePipe: DatePipe) {
+  constructor(private adminNewsService: AdminNewsService, private datePipe: DatePipe, private toastr: ToastrService) {
     // Get current local date in 'yyyy-MM-dd' format
     this.currentDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd') || '';
   }
@@ -50,8 +51,8 @@ export class AdminNewsComponent implements OnInit {
 
       },
       error => {
-        // Handle error
-        console.error('Error uploading data:', error);
+
+        this.toastr.success("","News artical added!");
         setTimeout(() => {
           this.headline = '';
           this.text = '';
